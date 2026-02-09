@@ -1,0 +1,158 @@
+/* --- 1. Global Variables & Reset --- */
+:root {
+    --kc-orange: linear-gradient(90deg, #FF9D66 0%, #FF6B6B 100%);
+    --wa-green: #019849;
+    --support-purple: #667EEA;
+    --brand-blue: #1A69F0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* We use blue here so that any scroll-gap is invisible */
+    background-color: var(--brand-blue); 
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* --- 2. Navbar: Fixed & Seamless --- */
+.navbar.fixed-top {
+    background-color: var(--brand-blue) !important;
+    z-index: 2000;
+    height: 85px; 
+    display: flex;
+    align-items: center;
+    border: none !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar-brand img {
+    height: 50px;
+    width: auto;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    font-size: 15px !important;
+    font-weight: 600;
+    white-space: nowrap;
+    padding: 0 15px !important;
+}
+
+/* Navbar Buttons */
+.btn-outline-light-custom {
+    color: white;
+    border: 1.5px solid rgba(255, 255, 255, 0.7) !important;
+    border-radius: 10px;
+    line-height: 1.2;
+    transition: 0.3s;
+}
+
+.btn-white-custom {
+    background: white !important;
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 8px 18px !important;
+    transition: transform 0.2s;
+}
+
+.btn-white-custom:hover { transform: translateY(-2px); }
+
+/* --- 3. Home Hero Section --- */
+.hero-wrapper {
+    background-color: var(--brand-blue);
+    position: relative;
+    width: 100%;
+    min-height: 95vh;
+    /* Pushes content below the fixed 85px navbar */
+    padding-top: 85px; 
+    margin-top: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding-bottom: 180px;
+}
+
+.taj-outline-bg {
+    position: absolute;
+    top: 0; right: 0; width: 70%; height: 80%;
+    background-image: url('https://www.studies-overseas.com/new-palace.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: top right;
+    opacity: 0.12;
+    z-index: 1;
+}
+
+.hero-title {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    color: white;
+}
+
+.hero-subtitle {
+    font-size: 1.1rem;
+    color: white;
+    opacity: 0.9;
+}
+
+.btn-start-journey {
+    background: var(--kc-orange);
+    color: white !important;
+    padding: 16px 40px;
+    border-radius: 12px;
+    border: none;
+    font-size: 18px;
+}
+
+/* Girl Image & Bottom Arc */
+.hero-girl-img {
+    max-width: 95%;
+    height: auto;
+    z-index: 15;
+    position: relative;
+    margin-bottom: -150px; 
+}
+
+.hero-bottom-arc {
+    position: absolute;
+    bottom: -1px; /* Removes tiny white line gap */
+    left: 0;
+    width: 100%;
+    height: 150px; 
+    z-index: 5;
+    line-height: 0;
+}
+
+/* --- 4. Floating Icons --- */
+.hero-floating-icons {
+    position: fixed;
+    bottom: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 40px;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.hero-floating-icons a {
+    pointer-events: auto;
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.wa-icon { background-color: var(--wa-green) !important; }
+.blue-icon { background-color: var(--support-purple) !important; }
+
+/* --- 5. Responsive --- */
+@media (max-width: 991px) {
+    .navbar.fixed-top { height: 75px; }
+    .hero-wrapper { text-align: center; padding-top: 100px; padding-bottom: 120px; }
+    .hero-girl-img { margin-bottom: -80px; margin-top: 40px; max-width: 80%; }
+    .hero-bottom-arc { height: 80px; }
+}

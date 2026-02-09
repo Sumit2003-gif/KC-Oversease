@@ -1,0 +1,87 @@
+
+.hero-wrapper {
+    background: #226CF5;
+    background: radial-gradient(circle at 15% 25%, #226CF5 0%, #0d3b8f 100%);
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden; 
+}
+
+.hero-image-container {
+    position: relative;
+    padding: 20px;
+    z-index: 5;
+}
+
+.hero-main-img {
+    width: 100%;
+    max-width: 550px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 20px 50px rgba(0,0,0,0.3));
+}
+
+.float-icon-btn {
+    position: fixed; bottom: 25px; width: 55px; height: 55px;
+    border-radius: 50%; display: flex; align-items: center;
+    justify-content: center; z-index: 1000; box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+.whatsapp-left { left: 20px; background: #25d366; }
+.whatsapp-left img { width: 32px; }
+.support-right { right: 20px; background: white; color: #226CF5; font-size: 24px; text-decoration: none; }
+
+@media (max-width: 991px) {
+    .hero-wrapper {
+        height: auto;
+        min-height: 100vh;
+        padding-top: 60px;
+        padding-bottom: 40px;
+        display: block;
+    }
+    
+    .hero-title { 
+        font-size: clamp(1.8rem, 6vw, 2.5rem) !important; 
+        line-height: 1.2 !important; 
+    }
+
+    .hero-image-container {
+        margin-top: 20px;
+        padding-bottom: 0;
+    }
+
+    .hero-main-img {
+        max-width: 85%; /* Mobile par size control */
+    }
+
+    .taj-mobile-overlay {
+        position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        width: 100%; height: 100%;
+        background: url('https://www.studies-overseas.com/new-palace.png') center/contain no-repeat;
+        opacity: 0.1; z-index: -1; filter: brightness(0) invert(1);
+    }
+}
+
+.taj-outline-bg {
+    position: absolute; top: 10%; right: 5%; width: 40%; height: 60%;
+    background: url('https://www.studies-overseas.com/new-palace.png') no-repeat;
+    background-size: contain; opacity: 0.1; filter: brightness(0) invert(1);
+}
+
+.highlight-text { color: #FFD2A8; text-transform: capitalize; }
+.badge-premium { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); padding: 8px 16px; border-radius: 50px; font-size: 11px; letter-spacing: 1px; }
+.btn-start-journey { background: linear-gradient(90deg, #FF914D, #FF6B6B); color: white !important; padding: 16px 36px; border-radius: 12px; font-weight: 700; text-decoration: none; display: inline-block; }
+.hero-arc-divider { position: absolute; bottom: -1px; width: 100%; height: 100px; z-index: 2; }
+
+/* --- ANIMATIONS --- */
+@keyframes bounceSlow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+.animate-bounce-slow { animation: bounceSlow 3s infinite ease-in-out; }
+.animate-bounce-slow-delay { animation: bounceSlow 3s infinite ease-in-out 1.5s; }
+
+@keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+.animate-slide-up-1 { opacity: 0; animation: slideUp 0.8s forwards 0.2s; }
+.animate-slide-up-2 { opacity: 0; animation: slideUp 0.8s forwards 0.4s; }
+.animate-slide-up-3 { opacity: 0; animation: slideUp 0.8s forwards 0.6s; }

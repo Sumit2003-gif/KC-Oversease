@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KC Overseas Education | Global Opportunities</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" /> 
+    
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/strengths.css"> 
+    <link rel="stylesheet" href="css/services.css"> 
+    <link rel="stylesheet" href="css/advantage.css">
+    <link rel="stylesheet" href="css/events.css">  
+    <link rel="stylesheet" href="css/tech-loan.css"> 
+    <link rel="stylesheet" href="css/university-tieups.css">  
+    <link rel="stylesheet" href="css/latest-updates.css">  
+    <link rel="stylesheet" href="css/Blog.css"> 
+    <link rel="stylesheet" href="css/news.css">  
+    <link rel="stylesheet" href="css/footer.css">
+
+    <style>
+        body { margin: 0; padding: 0; background-color: #f8f9fa; overflow-x: hidden; font-family: 'Segoe UI', sans-serif; } 
+        [id$="-container"] { min-height: 20px; } 
+        .fade-in { animation: fadeIn 0.5s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <div id="navbar-container"></div>
+    <div id="hero-container"></div>
+    <div id="strengths-container"></div>
+    <div id="services-container"></div>
+    <div id="advantage-container"></div>
+    <div id="events-container"></div>
+    <div id="tech-loan-container"></div>
+    <div id="university-tieups-container"></div> 
+    <div id="latest-updates-container"></div>
+    <div id="Blog-container"></div>
+    <div id="news-container"></div>
+    <div id="footer-container"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <script src="scripts/counter.js"></script>
+    <script src="scripts/service.js"></script>
+
+    <script>
+       
+        async function loadComponent(elementId, fileName) {
+            try {
+                const response = await fetch(fileName);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const data = await response.text();
+                const container = document.getElementById(elementId);
+                if (container) {
+                    container.innerHTML = data;
+                    container.classList.add('fade-in');
+                    return true;
+                }
+            } catch (error) {
+                console.error(`❌ Failed to load ${fileName}:`, error);
+                return false;
+            }
+        }
+
+        
+        async function initPage() {
+            console.log("🚀 KC Overseas: Loading Components...");
+
+            await loadComponent('navbar-container', 'components/navbar.html');
+            await loadComponent('hero-container', 'components/home/hero.html');
+            
+            const components = [
+                loadComponent('strengths-container', 'components/home/strengths.html'),
+                loadComponent('services-container', 'components/home/services.html'),
+                loadComponent('advantage-container', 'components/home/advantage.html'),
+                loadComponent('events-container', 'components/home/events.html'),
+                loadComponent('tech-loan-container', 'components/home/tech-loan.html'),
+                loadComponent('university-tieups-container', 'components/home/university-tieups.html'),
+                loadComponent('latest-updates-container', 'components/home/latest-updates.html'),
+                loadComponent('Blog-container', 'components/home/Blog.html'),
+                loadComponent('news-container', 'components/home/news.html'),
+                loadComponent('footer-container', 'components/footer.html')
+            ];
+
+            await Promise.allSettled(components);
+
+            console.log("✅ All Components Injected. Triggering JS...");
+
+            setTimeout(() => {
+                if (typeof initServiceSlider === 'function') {
+                    try { initServiceSlider(); } catch(e) { console.error("Service Slider Init Failed", e); }
+                }
+
+                if (typeof startCounter === 'function') {
+                    try { startCounter(); } catch(e) { console.error("Counter Init Failed", e); }
+                }
+            }, 250); 
+        }
+
+        window.addEventListener('load', initPage);
+    </script>
+</body>
+</html>
